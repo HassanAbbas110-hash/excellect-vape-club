@@ -3,7 +3,7 @@ const CONFIG = {
   name: "Excellect Vape Club",
   phone: "+27 84 386 9600",
   whatsapp: "27843869600",
-  email: "",
+  email: "ahmedmostak23@gmail.com",
   address: ["Shop B38, B39 & B40", "East Rand Traders Square (21 Frank Road)", "Bardene, Boksburg, 1462"],
   mapsQuery: "Excellect Vape Club, Shop B38, B39 & B40, East Rand Traders Square, Bardene, Boksburg 1462",
   hoursNote: "Call or WhatsApp to check today's hours", // TODO: confirm exact trading hours with the shop
