@@ -5,11 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Product · Excellect Vape Club</title>
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#0d0c0c">
+<meta name="theme-color" content="#0a0907">
 <link rel="icon" href="assets/img/icon.png">
-<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/theme.css">
 <style>
 .pd{display:grid;grid-template-columns:1fr 1fr;gap:48px;padding-block:24px 64px;align-items:start}
 .pic{position:sticky;top:calc(var(--hdr) + 20px);aspect-ratio:1;border-radius:20px;background:#fff;overflow:hidden;display:grid;place-items:center}
@@ -105,7 +106,7 @@ Promise.all([loadProducts(), loadDetail(id)]).then(([all, det]) => {
       <div class="box">
         <div>${I.pin}<span><b>Collect in Bardene, Boksburg.</b> Order it here and pick it up at East Rand Traders Square once we've confirmed on WhatsApp.</span></div>
         <div>${I.truck}<span><b>Buying in bulk?</b> We're a wholesale and retail store. Ask us on WhatsApp for bulk prices.</span></div>
-        ${CONFIG.partnerName ? "" : "<!--"}<div>${I.out}<span><b>Need it fast?</b> Order it through our delivery partner <a class="link" href="${waveLink()}" target="_blank" rel="noopener">7Waves</a>, at shop prices.</span></div>${CONFIG.partnerName ? "" : "-->"}
+        ${CONFIG.partnerName ? "" : "<!--"}<div>${I.out}<span><b>Need it fast?</b> Order it through our delivery partner <a class="link" href="${waveLink()}" target="_blank" rel="noopener">7Waves</a>.</span></div>${CONFIG.partnerName ? "" : "-->"}
         <div>${I.clock}<span><b>18+ only.</b> We check ID in the shop and on collection.</span></div>
       </div>
       ${det.d ? `<div class="desc"><h2>About this product</h2><p>${esc(det.d)}</p></div>` : ""}

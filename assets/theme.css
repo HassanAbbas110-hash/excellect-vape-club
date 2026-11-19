@@ -1,0 +1,69 @@
+/* Excellect "brass & midnight" layer: loads after site.css and overrides the base look. */
+:root{
+  --bg:#0a0907;--panel:#13110d;--panel2:#181510;--line:#2a2418;
+  --ink:#f4efe6;--mute:#b0a690;--dim:#8a816f;
+  --red:#e9b949;--red-hi:#f5cf6e;--red-soft:rgba(233,185,73,.12);
+  --paper:#110f0b;--paper-ink:#f4efe6;--paper-mute:#b0a690;--paper-line:#2a2418;
+  --head:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Instrument Serif",Georgia,serif;
+  --r:6px;
+}
+body{background:var(--bg);font-family:var(--body)}
+/* faint brass grain over everything */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.05;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+h1,h2,h3,h4{font-family:var(--head);font-weight:700;letter-spacing:-.025em;line-height:1.02}
+h1,h2{text-transform:none}
+h1{font-size:clamp(42px,7vw,88px)}
+h2{font-size:clamp(32px,4.4vw,54px)}
+h3{font-size:21px;letter-spacing:-.015em}
+.script,h1 .script,h2 .script{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;transform:none;text-shadow:none;font-size:1.08em;margin:0 .04em;color:var(--red-hi)}
+
+/* eyebrow labels: hairline + small caps instead of a bare coloured word */
+.tag{display:inline-flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.22em;color:var(--red)}
+.tag::before{content:"";width:22px;height:1px;background:currentColor}
+.sec-head{border-top:1px solid var(--line);padding-top:22px;align-items:flex-end}
+.sec-head p{color:var(--mute);max-width:380px}
+.phead{padding-block:44px 34px}
+.phead h1{font-size:clamp(40px,6vw,72px)}
+
+/* square, engraved-looking buttons */
+.btn{border-radius:var(--r);height:50px;padding:0 24px;font-weight:600;letter-spacing:.01em}
+.btn-red{background:linear-gradient(180deg,#f2c75c,#d9a634);color:#1a1408;box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 12px 30px -14px rgba(233,185,73,.8)}
+.btn-red:hover{background:linear-gradient(180deg,#f7d57a,#e4b445)}
+.btn-line{border:1px solid rgba(233,185,73,.45);color:var(--ink)}
+.btn-line:hover{background:var(--red-soft);border-color:var(--red)}
+.btn-wa{border-radius:var(--r)}
+.btn-wave{border-radius:var(--r)}
+
+/* top strip + header */
+.strip{background:#000;color:var(--red-hi);border-bottom:1px solid var(--line);font-weight:500;letter-spacing:.03em}
+header.hdr{background:rgba(10,9,7,.88);border-bottom:1px solid var(--line)}
+.nav a{border-radius:0;position:relative;color:var(--mute)}
+.nav a:hover,.nav a[aria-current="page"]{background:none;color:var(--ink)}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:1px;background:var(--red)}
+.hsearch{border-radius:var(--r);background:var(--panel)}
+
+/* ticker: flat, dark, outlined, no tilt */
+.marquee{background:var(--bg);color:var(--red-hi);transform:none;margin-inline:0;box-shadow:none;border-block:1px solid var(--line);padding-block:16px}
+.mq span{font-family:var(--serif);font-style:italic;font-weight:400;font-size:30px;text-transform:none;letter-spacing:0}
+.mq span::after{content:"✦";width:auto;height:auto;background:none;border-radius:0;font-style:normal;font-size:14px;opacity:.6}
+
+/* cards and panels: sharper corners, brass hairlines */
+.card{border-radius:var(--r);background:var(--panel)}
+.card:hover{border-color:rgba(233,185,73,.55)}
+.card .ph{background:#f6f2ea}
+.flag{border-radius:3px}
+.add{border-radius:var(--r)}
+.chip{border-radius:3px}
+.dopt,.card2,.qa details,.rules>div,.steps .step,.ways .way,.soc,.rev,.club{border-radius:var(--r)}
+.dopt.wv,.way.wv{background:linear-gradient(150deg,#0e2238,#0b1420 70%);border-color:#21466e}
+.seg,.seg button,.field input,.field textarea,.field select,.qty,.popt{border-radius:var(--r)}
+.drawer{background:var(--panel)}
+.gate{background:radial-gradient(ellipse at 50% 40%,rgba(233,185,73,.12),transparent 60%),#070605}
+.wa-float{border-radius:14px}
+.paper{border-block:1px solid var(--line)}
+.ring::before{display:none}
+footer.ftr{border-top:1px solid var(--line);background:#070605}
+.ftr h4{font-family:var(--serif);font-style:italic;font-weight:400;font-size:22px;color:var(--red-hi);text-transform:none;letter-spacing:0}

@@ -6,11 +6,12 @@
 <title>Shop · Excellect Vape Club</title>
 <meta name="description" content="Everything in stock at Excellect Vape Club, Bardene, Boksburg: disposables, pod kits, e-liquids, nic salts, coils, hookah pipes, shisha and snus. Filter by brand, flavour, puffs and price.">
 <meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#0d0c0c">
+<meta name="theme-color" content="#0a0907">
 <link rel="icon" href="assets/img/icon.png">
-<link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap">
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/theme.css">
 <style>
 .layout{display:grid;grid-template-columns:260px 1fr;gap:32px;padding-block:28px 40px;align-items:start}
 .side{position:sticky;top:calc(var(--hdr) + 18px);max-height:calc(100vh - var(--hdr) - 36px);overflow:auto;padding-right:6px;display:grid;gap:22px;scrollbar-width:thin}
@@ -101,7 +102,7 @@
 
     <section aria-labelledby="ttl">
       <div class="bar">
-        <div><h1 id="ttl">Everything in stock</h1><p class="cnt" id="cnt">Loading the shelf…</p></div>
+        <div><h1 id="ttl">The <span class="script">shelves</span></h1><p class="cnt" id="cnt">Loading the shelf…</p></div>
         <div class="tools">
           <button class="btn btn-line btn-sm ffbtn" id="ffbtn">Filters</button>
           <label class="sq"><span class="sr">Search the shop</span><span id="sq-ic"></span><input id="q" type="search" placeholder="Search, e.g. Elf Bar watermelon"></label>
@@ -113,7 +114,7 @@
       <div class="active" id="active"></div>
       <div class="grid" id="grid"></div>
       <div class="loadmore" id="more"></div>
-      <p class="muted" style="text-align:center;margin-top:26px;font-size:14px">Order here and collect at East Rand Traders Square, Bardene.</p>
+      <p class="muted" style="text-align:center;margin-top:26px;font-size:14px">Order here and collect at East Rand Traders Square, or get it delivered with 7Waves.</p>
     </section>
   </div>
 </main>

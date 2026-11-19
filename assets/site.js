@@ -10,8 +10,8 @@ const CONFIG = {
   onlineStore: "",
   instagram: "",  // TODO: paste the shop's Instagram profile link
   facebook: "",   // TODO: paste the shop's Facebook page link
-  partnerName: "", // delivery partner shown as a 3rd way to get an order; "" hides every partner card, button and sentence
-  partnerUrl: ""          // TODO: the shop's page on the partner's site
+  partnerName: "7Waves", // delivery partner shown as a 3rd way to get an order; "" hides every partner card, button and sentence
+  partnerUrl: "https://waves-pink-kappa.vercel.app/shop" // TODO: swap for Excellect's own 7Waves page once it exists
 };
 const DETAIL_SHARDS = 40; // must match SHARDS in tools/snapshot.py
 
@@ -147,7 +147,7 @@ function rememberSeen(p) {
 
 /* ---------- drawer ---------- */
 let drawerMode = "cart", fulfil = store.get("cv_fulfil", "collect");
-if (fulfil === "waves" && !CONFIG.partnerName) fulfil = "collect";
+if (fulfil === "deliver" || (fulfil === "waves" && !CONFIG.partnerName)) fulfil = "collect";
 function openDrawer(mode) { drawerMode = mode; renderDrawer(); $("#drawer").classList.add("on"); $("#scrim").classList.add("on"); document.body.classList.add("lock"); $("#drawer .x").focus(); }
 function closeDrawer() { $("#drawer").classList.remove("on"); $("#scrim").classList.remove("on"); document.body.classList.remove("lock"); }
 function lineHtml(l, fav) {
@@ -207,7 +207,7 @@ function chromeTop() {
   document.body.insertAdjacentHTML("afterbegin", `
   <a class="sr" href="#main">Skip to content</a>
   <div class="progress" aria-hidden="true"></div>
-  <div class="strip"><div class="wrap"><span>Wholesale &amp; retail</span><span>Shop at East Rand Traders Square, Bardene, Boksburg · ${CONFIG.hoursNote}</span><span>Strictly 18+</span></div></div>
+  <div class="strip"><div class="wrap"><span>Wholesale &amp; retail${CONFIG.partnerName ? " &middot; Delivery with " + CONFIG.partnerName : ""}</span><span>Shop at East Rand Traders Square, Bardene, Boksburg · ${CONFIG.hoursNote}</span><span>Strictly 18+</span></div></div>
   <header class="hdr"><div class="wrap hdr-in">
     <a class="logo" href="index.html" aria-label="Excellect Vape Club home"><img src="assets/img/logo-sm.webp" alt="Excellect Vape Club" width="180" height="41"></a>
     <nav class="nav" aria-label="Main">${navLinks}</nav>
@@ -229,7 +229,7 @@ function chromeBottom() {
   <footer class="ftr"><div class="wrap">
     <div class="ftr-grid">
       <div><a class="logo" href="index.html"><img src="assets/img/logo-sm.webp" alt="Excellect Vape Club" width="180" height="41" loading="lazy"></a>
-        <p>Vape, hookah and snus at East Rand Traders Square in Bardene, Boksburg. Wholesale and retail.</p></div>
+        <p>Vape, hookah and snus at East Rand Traders Square in Bardene, Boksburg. Wholesale and retail, with delivery through 7Waves.</p></div>
       <div><h4>Shop</h4><ul><li><a href="shop.html?s=Disposables">Disposables</a></li><li><a href="shop.html?s=Devices">Devices &amp; pod kits</a></li><li><a href="shop.html?s=E+Liquids">E-liquids</a></li><li><a href="shop.html?s=Nic+Salts">Nic salts</a></li><li><a href="shop.html?c=hookah">Hookah</a></li><li><a href="shop.html?c=snus">Snus</a></li><li><a href="fit.html">Coil &amp; pod finder</a></li></ul></div>
       <div><h4>Excellect</h4><ul><li><a href="about.html">About us</a></li><li><a href="visit.html">Visit the shop</a></li><li><a href="help.html">Ordering &amp; help</a></li><li><a href="help.html#faq">FAQs</a></li></ul></div>
       <div><h4>Talk to us</h4><ul><li><a href="tel:${CONFIG.phone.replace(/\s/g, "")}">${CONFIG.phone}</a></li><li><a href="${wa("Hi Excellect!")}" target="_blank" rel="noopener">WhatsApp us</a></li>${CONFIG.email ? `<li><a href="mailto:${CONFIG.email}">${CONFIG.email}</a></li>` : ""}<li><a href="${mapsLink}" target="_blank" rel="noopener">${CONFIG.address[0]}, ${CONFIG.address[2]}</a></li></ul></div>
@@ -243,15 +243,15 @@ function chromeBottom() {
     <div class="dh"><h3>Your bag</h3><button class="x" data-close aria-label="Close">${I.x}</button></div>
     <div class="db"></div>
     <div class="df">
-      <div class="seg${CONFIG.partnerName ? " three" : ""}" id="d-mode" role="group" aria-label="How do you want it?"><button data-m="collect">Collect</button><button data-m="deliver">Delivery (ask us)</button>${CONFIG.partnerName ? `<button data-m="waves">${CONFIG.partnerName}</button>` : ""}</div>
-      <div class="wavebox" id="d-wave" hidden><b>Want it fast? Order through 7Waves</b><span>7Waves is our delivery partner. Same prices as the shop, brought to your door. Copy your bag, open 7Waves and order the same items there.</span>
+      <div class="seg" id="d-mode" role="group" aria-label="How do you want it?"><button data-m="collect">Collect</button>${CONFIG.partnerName ? `<button data-m="waves">${CONFIG.partnerName}</button>` : ""}</div>
+      <div class="wavebox" id="d-wave" hidden><b>Want it fast? Order through 7Waves</b><span>7Waves is our delivery partner. Copy your bag, open 7Waves and order the same items there.</span>
         <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn-sm btn-line" id="d-copy">Copy my list</button><a class="btn btn-sm btn-wave" id="d-wave-go" target="_blank" rel="noopener">Open 7Waves ${I.out}</a></div></div>
       <div class="field pickup"><label for="d-name">Your name</label><input id="d-name" autocomplete="name" placeholder="Name and surname"></div>
       <div class="field" id="d-addr-wrap" hidden><label for="d-addr">Delivery address</label><input id="d-addr" autocomplete="street-address" placeholder="Street, suburb, city"></div>
       <div class="field pickup"><label for="d-note">Anything else? (optional)</label><textarea id="d-note" rows="2" placeholder="Flavour swaps, best time to collect…"></textarea></div>
       <div class="tot"><span class="muted">Total</span><strong id="d-total">R0</strong></div>
       <button class="btn btn-wa pickup" id="d-send">${I.wa} Send order on WhatsApp</button>
-      <p class="fine pickup">We check stock and confirm delivery costs and payment with you on WhatsApp before anything is charged. ID required on collection and delivery.</p>
+      <p class="fine pickup">We check stock and confirm the total and payment with you on WhatsApp before anything is charged. Bring your ID when you collect.</p>
     </div></div>
   <div class="pick" id="pick" role="dialog" aria-modal="true" aria-labelledby="pick-h" hidden><div class="pick-in">
     <button class="x" data-pclose aria-label="Close">${I.x}</button>
