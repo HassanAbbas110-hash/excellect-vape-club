@@ -1,0 +1,13 @@
+{
+  "name": "Excellect Vape Club", "short": "Excellect",
+  "domain": "", "email": "",
+  "phone": "+27 84 386 9600", "whatsapp": "27843869600",
+  "street": "Shop B38, B39 & B40", "centre": "East Rand Traders Square", "road": "21 Frank Road",
+  "town": "Bardene, Boksburg", "postcode": "1462", "province": "Gauteng",
+  "hoursNote": "Call or WhatsApp to check today's hours",
+  "instagram": "", "facebook": "",
+  "partnerName": "", "partnerUrl": "",
+  "onlineStore": "",
+  "accent": "#f6c44a",
+  "images": { "logo": "src-img/logo.png", "shopfront": "src-img/shopfront.jpg", "interior": "src-img/interior.jpg", "disposables": "src-img/disposables.jpg", "eliquids": "src-img/eliquids.jpg" }
+}
